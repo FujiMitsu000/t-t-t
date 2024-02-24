@@ -1,0 +1,29 @@
+{
+  "name": "test-last",
+  "version": "1.0.0",
+  "description": "",
+  "main": "db.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "nodemon index.js",
+    "migrations": "knex migrate:latest",
+    "seeds": "knex seed:run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^1.0.7",
+    "pg": "^8.11.3",
+    "socket.io": "^4.5.0",
+    "sqlite3": "^5.1.7"
+  },
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

@@ -1,0 +1,43 @@
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.button_primary {
+    background: #60C2AA;
+    color: #FFFFFF;
+    border-radius: 12px;
+}
+
+.button_primary:hover {
+    background: #3BA189;
+    color: #FFFFFF;
+    
+}
+
+.button_secondary {
+    background: #F7F7F7;
+    outline: solid 1px rgba(0, 0, 0, 0.507);
+    color: black;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 6px;
+    width: 125px;
+}
+
+.button_secondary:hover {
+    background: #DCDCDF;    
+}
+
+.button:disabled {
+    opacity: 0.3; 
+}
+
+.disabled {
+    pointer-events:none;
+}
+

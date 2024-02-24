@@ -1,0 +1,53 @@
+.history__trophy {
+  margin-left: 5px;
+  width: 22px;
+  height: 22px;
+}
+
+.player-row__icon {
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+}
+
+.player-row__icon_cross {
+  fill: #60C2AA;
+}
+
+.player-row__icon_circle {
+  fill: #e64c34;
+}
+
+.winner {
+  color: crimson;
+}
+
+.td_history:nth-of-type(1),
+.td_history:nth-of-type(3),
+.th_history:nth-of-type(1),
+.th_history:nth-of-type(3) { 
+  text-align: left;
+}
+
+.td_history:nth-of-type(2),
+.th_history:nth-of-type(2) {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .history__player-one, 
+  .history__player-two,
+  .history__versus {
+    display: flex;
+    align-items: center;
+  }
+
+  .td_history:nth-of-type(2),
+  .th_history:nth-of-type(2) {
+    text-align: left;
+  }
+
+  .td_history:nth-of-type(2):before { content: "Игроки"; }
+  .td_history:nth-of-type(4):before { content: "Дата"; }
+  .td_history:nth-of-type(5):before { content: "Время игры"; }
+}

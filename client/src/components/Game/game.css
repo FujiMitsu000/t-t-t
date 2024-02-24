@@ -1,0 +1,17 @@
+.game {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  min-height: 100vh; 
+  height: 100%;
+}
+
+@media (max-width: 950px) {
+  .game {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}

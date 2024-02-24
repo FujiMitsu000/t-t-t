@@ -1,0 +1,41 @@
+.game-field__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px solid #2D3540;
+  height: 150px;
+  width: 150px;
+  padding: 10px;
+}
+
+.cell__symbol {
+  height: 95px;
+  width: 95px;
+}
+
+@media (max-width: 950px) {
+  .game-field__cell {
+    height: 140px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 570px) {
+  .game-field__cell {
+    height: 24vw;
+    width: 24vw;
+  }
+  .cell__symbol {
+    height: 18vw;
+    width: 18vw;
+  }
+}
+
+.cell__cross {
+  fill: #214e71;
+}
+
+.cell__circle {
+  fill: #e64c34;
+}

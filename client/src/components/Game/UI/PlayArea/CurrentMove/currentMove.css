@@ -1,0 +1,31 @@
+.current-move {
+    min-width: 200px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 0 2px 1px white;
+    padding: 6px 0px;
+}
+
+.current-player {
+    font-size: 25px;
+}
+
+.symbol {
+    width: 25px;
+    height: 25px;
+}
+
+.cross {
+    fill: #214e71;
+}
+
+.circle {
+    fill: #e64c34;
+}
+

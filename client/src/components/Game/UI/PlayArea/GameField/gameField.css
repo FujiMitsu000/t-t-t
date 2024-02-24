@@ -1,0 +1,7 @@
+.game_field {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: min-content;
+  background-color: white;
+  border-radius:22px;
+}

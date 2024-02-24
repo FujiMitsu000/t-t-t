@@ -1,0 +1,52 @@
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+
+td {
+  position: relative;
+}
+
+td, th { 
+  padding: 6px; 
+  text-align: center;
+  height: 32px;
+}
+
+.login {
+  color: #60C2AA;
+}
+
+@media 
+only screen and (max-width: 700px) {
+  table, thead, tbody, th, td, tr { 
+      display: block; 
+  }
+  thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+  }
+  tr { border: 1px solid #ccc; }
+  td { 
+      border: none;
+      border-bottom: 1px solid #eee; 
+      padding-left: 50%; 
+  }
+  td, th { 
+    text-align: left;
+    height: max-content;
+  }
+  td:before { 
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+  }
+}

@@ -1,0 +1,74 @@
+.invitation_text {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:darkcyan;
+    font-size: 40px;
+    text-align: center;
+}
+
+.invitation_buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.invitation_button {
+    width: 150px;
+    height: 90px;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.accept_button {
+    background-color: rgba(132, 205, 59, 0.964);
+    outline: 3px solid darkslategrey;
+}
+
+.accept_button:visited {
+    background-color: rgba(132, 205, 59, 0.964);
+    outline: 3px solid darkslategrey;
+}
+
+.accept_button:hover {
+    background-color: rgba(108, 185, 31, 0.964);
+}
+
+.decline_button {
+    background-color: rgba(202, 49, 49, 0.954);
+    outline: 3px solid darkred;
+}
+
+.decline_button:hover {
+    background-color: rgba(171, 28, 28, 0.954);
+}
+
+.name {
+    color:#c53131;
+    margin: 0px;
+}
+
+@media (max-width: 700px) {
+    .invitation_buttons {
+        gap: 15px;
+    }
+    .invitation_button {
+        width: 150px;
+        height: 80px;
+        font-size: 20px;
+        font-weight: 800;
+    }
+    .invitation_text {
+        font-size: 37px;
+    }
+}
+
+@media (max-width: 400px) {
+    .invitation_button {
+        width: 15vw;
+        min-width: 120px;
+        height: 70px;
+        font-size: 20px;
+        font-weight: 800;
+    }
+    .invitation_text {
+        font-size: 30px;
+    }
+}

@@ -1,0 +1,30 @@
+.message {
+    width: max-content;
+    max-width: 70%;
+    max-height: max-content;
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin: 10px 5px;
+    overflow-wrap: break-word;
+    text-align: start;
+    vertical-align: middle;
+    line-height: 29px;
+}
+
+.message__sender-player {
+    align-self: flex-end;
+    background-color:rgb(172, 245, 245);
+}
+
+.message__recipient-player {
+    align-self: flex-start;
+    background-color:rgb(132, 235, 235);
+}
+
+
+.server-message {
+    align-self: center;
+    margin-top: 5px;
+    color: rgb(128, 128, 128);
+    font-size: 13pt;
+}

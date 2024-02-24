@@ -1,0 +1,41 @@
+.players__status_active {
+  background: #A8D37F;
+}
+
+.players__status_blocked {
+  background: #EC7777;
+}
+
+.players__add-new {
+  align-self: end;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+}
+
+.players__status {
+  color: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.players_active {
+  background: #A8D37F;
+}
+
+.players_deleted {
+  background: #EC7777;
+}
+
+@media (max-width: 700px) {
+  .players__status {
+    width: max-content;
+  }
+
+  .td_players:nth-of-type(1):before { content: "Логин"; }
+  .td_players:nth-of-type(2):before { content: "Статус"; }
+  .td_players:nth-of-type(3):before { content: "Создан"; }
+  .td_players:nth-of-type(4):before { content: "Изменен"; }
+}
