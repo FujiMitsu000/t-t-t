@@ -5,7 +5,7 @@ docker compose up
 
 ИЛИ
 
-из корневой директории ввести команды:
+из корневой директории ввести команды по очереди:
 
 cd client
 
@@ -20,3 +20,5 @@ cd server
 npm install
 
 npm start или npm test для запуска через nodemon
+
+Фронт запуститься на localhost:3000, сервер - localhost:8000
