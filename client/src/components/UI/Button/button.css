@@ -11,12 +11,12 @@
     background: #60C2AA;
     color: #FFFFFF;
     border-radius: 12px;
+    padding: 10px 20px;
 }
 
 .button_primary:hover {
     background: #3BA189;
     color: #FFFFFF;
-    
 }
 
 .button_secondary {

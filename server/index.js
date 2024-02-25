@@ -49,7 +49,7 @@ function startApp() {
         setTimeout(async () => {
             await createTables();
             await runSeeds();
-        }, 3000);
+        }, 5000);
         
     } catch (e) {
         console.log(e)

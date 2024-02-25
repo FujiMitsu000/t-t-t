@@ -5,10 +5,9 @@ module.exports = {
         createTables: async() => {
                 try {
                         const db = knex(config.development.database);
-                        console.log('tables');
                         await db.schema.hasTable('users').then(async (exists) => {
-                                console.log(exists);
                                 if (!exists) {
+                                console.log('tables created');
                                 await db.schema
                                         .createTable('users', (table) => {
                                 table

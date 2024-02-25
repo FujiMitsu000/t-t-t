@@ -1,11 +1,10 @@
 const knex = require('knex');
 const { getHashPassword } = require('../utils/crypto');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); 
 const config = require('../configs');
 const { validationResult } = require('express-validator');
-const { getUserByLogin, getUserByUsername } = require('./players.controller');
+const { getUserByLogin, getUserByUsername, getUserById } = require('./players.controller');
 const { isValidPassword } = require('../utils/comparePasswords');
+const { createToken } = require('../utils/createToken');
 
 module.exports = {
     registrationUser: async(req, res) => {
@@ -58,9 +57,7 @@ module.exports = {
         const {username, password} = req.body;
 
         if (!username || !password) {
-            res.sendStatus(400);
-
-            return;
+            return res.sendStatus(400);
         }
 
         const [userExist] = await getUserByUsername(username);
@@ -77,61 +74,26 @@ module.exports = {
                 .json([{msg: `Неверный пароль`}])
         }
 
-        const [userId] = await db
+        const [{id}] = await db
             .select('id')
             .from('users')
             .where({'username': username})
 
-        const [roleId] = await db
+        const [{role_id}] = await db
             .select('role_id')
             .from('assigned_roles')
-            .where({'user_id': userId.id})
-
-        const [userRole] = await db
+            .where({'user_id': id})
+            
+        const [{role}] = await db
             .into('roles')
             .select({
                 role: 'role'
             })
-            .where({'id': roleId.role_id})
+            .where({'id': role_id})
 
         res.json(response = {
-            'token': jwt.sign(
-                {sub: {id: userId.id, username, userRole: userRole.role}}, 
-                'meow', 
-                // {expiresIn: '24h'}
-            ),
+            'token': createToken(id, username, role),
         });
-    },
-    createToken: async(req, res) => {
-        const {username, password} = req.body;
-        const [user] = await getUserByLogin(['username', 'password'], [{
-            left: 'username',
-            operator: '=',
-            right: username
-        }]);
-
-        const isEqual = await bcrypt.compare(password, user.password);
-        
-        if (isEqual) {
-            return res
-                .status(200)
-                .json({token: jwt.sign({sub: user.id}, 'meow')});
-        } else {
-            return res
-                .status(400)
-                .json({msg: 'Неверный пароль'});
-        }
-    },
-    getToken: async(req, res) => {
-        const db = knex(config.development.database);
-        const {userId} = req.params;
-
-        const [token] = await db
-            .select('token')
-            .from('tokens')
-            .where({'user_id': userId});
-
-    res.json(token.token);
     },
     checkToken: async(req, res) => {
         const user = req.body.user.sub;
@@ -152,4 +114,28 @@ module.exports = {
 
         return res.json({role: user.userRole, access: true});
     },
+    makeMeAdmin: async(req, res) => {
+        const {userId} = req.body;
+        const db = knex(config.development.database);
+
+        const [{role_id}] = await db
+            .from('assigned_roles')
+            .select('role_id')
+            .where({'user_id': userId})
+
+        if (role_id == 2) {
+            return res.json(false);
+        }
+
+        await db
+            .from('assigned_roles')
+            .update({role_id: 2})
+            .where({'user_id': userId})
+
+        const [user] = await getUserById(userId);
+
+        res.json(response = {
+            'token': createToken(userId, user.username, 'Admin'),
+        });
+    }
 };

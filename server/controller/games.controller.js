@@ -3,6 +3,9 @@ const config = require('../configs');
 
 module.exports = {
     getGames: async (req, res) => {
+        const limit = Number(req.query.limit) || 10;
+        const offset = Number(req.query.offset) || 0;
+        
         const db = knex(config.development.database);
         const allGames = await db
             .select({

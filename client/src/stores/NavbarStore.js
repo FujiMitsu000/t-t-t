@@ -14,19 +14,6 @@ export default class NavbarStore {
 
     changeActive() {
         this.activeMenu = !this.activeMenu;
-        this.toggleTables();
-    }
-
-    toggleTables() {
-        if (this.activeMenu) {
-            document.querySelectorAll('td').forEach(element => {
-                element.style.position = 'static';
-            });
-        } else {
-            document.querySelectorAll('td').forEach(element => {
-                element.style.position = 'relative';
-            });
-        }
     }
 
     displayModal(isModal, text = '') {

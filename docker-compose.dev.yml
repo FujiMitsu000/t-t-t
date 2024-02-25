@@ -2,7 +2,7 @@ services:
   server:
     build: 
       context: server
-    image: fujimitsu000/ttt-server
+    # image: fujimitsu000/ttt-server
     ports:
       - 8000:8000
     tty: true
@@ -40,7 +40,7 @@ services:
   client:
     build:
       context: client
-    image: fujimitsu000/ttt-client
+    # image: fujimitsu000/ttt-client
     ports:
       - 3000:3000
     container_name: ttt-client

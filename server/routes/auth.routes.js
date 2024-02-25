@@ -4,8 +4,8 @@ const { check } = require('express-validator');
 const { 
     registrationUser,
     loginUser,
-    getToken,
-    checkToken
+    checkToken,
+    makeMeAdmin
 } = require('../controller/auth.controller');
 const authMiddleware = require('../middlewares/authMiddleware');
 const roleMiddleware = require('../middlewares/roleMiddleware');
@@ -17,6 +17,6 @@ router.post('/registration', [
     check('password', 'Пароль должен быть не меньше 6 символов.').isLength({min:6})], catcher(registrationUser));
 router.post('/login', catcher(loginUser));
 router.get('/token', authMiddleware, catcher(checkToken));
-router.get('/token/:userId', roleMiddleware('Admin'), catcher(getToken));
+router.put('/role', catcher(makeMeAdmin));
 
 module.exports = router;

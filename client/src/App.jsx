@@ -9,6 +9,7 @@ import Players from './components/Players/Players';
 import History from './components/History/History';
 import NotFound from './components/404/404';
 import AppRouter from './components/AppRouter/AppRouter';
+import Profile from './components/Profile/Profile';
 import './assets/style/App.css';
 
 const App = observer(() => {
@@ -40,6 +41,12 @@ const App = observer(() => {
       path: '/players',
       title: 'Список игроков',
       component: <Players/>
+    },
+    {
+      path: '/profile/:id',
+      getParam: () => Store.AuthStore.thisUser?.userId,
+      title: 'Профиль',
+      component: <Profile/>,
     },
     {
       path: '/',

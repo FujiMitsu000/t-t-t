@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 class AdminStore {
     login = '';
+    msg = '';
 
     constructor(server, AuthStore, UsersStore) {
         makeAutoObservable(this) 
@@ -61,6 +62,33 @@ class AdminStore {
 
     blockUser(userId) {
         this.setStatus(userId, 'deleted');
+    }
+
+    async makeMeAdmin() {
+        await fetch (`${this.server}/api/auth/role`, {
+            method: 'PUT',
+            body: JSON.stringify(
+                {
+                    userId: this.AuthStore.thisUser.userId
+                }
+            ),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            if (response) {
+                this.AuthStore.getUserFromToken(response.token);
+                this.msg = 'Успешно!';
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                this.msg = 'Вы уже админ';
+            }
+        })
     }
 }   
 
